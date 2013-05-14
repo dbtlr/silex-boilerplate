@@ -12,7 +12,7 @@ class ControllerResolver extends SilexControllerResolver
      */
     protected function doGetArguments(Request $request, $controller, array $parameters)
     {
-        if (isset($controller[0]) && $controller[0] instanceof Controller) {
+        if (is_array($controller) && isset($controller[0]) && $controller[0] instanceof Controller) {
             $controller[0]->setApplication($this->app);
         }
 
