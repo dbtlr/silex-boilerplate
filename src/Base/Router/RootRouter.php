@@ -7,10 +7,6 @@ class RootRouter implements RouterInterface
 {
     public function load(Application $app)
     {
-        $app->get('/hello/{name}', function($name) use ($app) { 
-            return $app->render('hello.twig', array(
-                'name' => $name,
-            ));
-        }); 
+        $app->get('/hello/{name}', 'Base\Controller\RootController::helloAction'); 
     }
 }
