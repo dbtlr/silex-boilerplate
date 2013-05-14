@@ -8,12 +8,25 @@ abstract class Controller
 {
     protected $app;
 
+    /**
+     * Set the application class to the controller.
+     *
+     * @param Base\Application $app
+     */
     public function setApplication(Application $app)
     {
         $this->app = $app;
     }
 
-    protected function render($tpl, $values, $request=null)
+    /**
+     * Base render method.
+     *
+     * @param string $tpl
+     * @param array $values
+     * @param Symfony\Component\HttpFoundation\Request|null $request
+     * @return Symfony\Component\HttpFoundation\Response
+     */
+    protected function render($tpl, $values = array(), $request = null)
     {
         preg_match('/^(.*)Controller$/', get_class($this), $matches);
 
