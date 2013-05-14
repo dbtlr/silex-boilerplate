@@ -2,6 +2,7 @@
 
 namespace Base;
 
+use Base\Router\RouterInterface;
 use Silex\Application as SilexApplication;
 use Symfony\Component\HttpFoundation\Response;
 use Silex\Provider\TwigServiceProvider;
@@ -16,7 +17,7 @@ class Application extends SilexApplication
         $this->createErrorHandler();
     }
 
-    public function addRouter($router)
+    public function addRouter(RouterInterface $router)
     {
         $router->load($this);
     }

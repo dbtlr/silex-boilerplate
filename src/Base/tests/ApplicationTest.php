@@ -1,5 +1,6 @@
 <?php
 namespace Base;
+use Base\Router\RouterInterface;
 
 class ApplicationTest extends \PHPUnit_Framework_TestCase
 {
@@ -43,9 +44,9 @@ class ApplicationTest extends \PHPUnit_Framework_TestCase
     }
 }
 
-class ApplicationTestRouter
+class ApplicationTestRouter implements RouterInterface
 {
-    public function load($app)
+    public function load(Application $app)
     {
         $app->get('/test', function($name) use ($app) { 
             return 'test';
