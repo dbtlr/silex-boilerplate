@@ -10,20 +10,15 @@ class Application extends SilexApplication
 {
     use SilexApplication\TwigTrait;
 
-    public function start()
+    public function start($viewPath)
     {
-        $this->register(new TwigServiceProvider(), array(
-            'twig.path' => $this['app.view_path'],
-        ));
-
+        $this->register(new TwigServiceProvider(), array( 'twig.path' => $viewPath ));
         $this->createErrorHandler();
-        $this->loadRoutes();
     }
 
-    public function loadRoutes()
+    public function addRouter($router)
     {
-        $app = $this;
-        require_once $this['app.path'] . '/routes.php';
+        $router->load($this);
     }
 
     protected function createErrorHandler()

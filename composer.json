@@ -1,7 +1,11 @@
 {
     "require": {
         "silex/silex": "1.0.*@dev",
-        "twig/twig": ">=1.8,<2.0-dev"
+        "twig/twig": ">=1.8,<2.0-dev",
+        "phpunit/phpunit": "3.7.*"
+    },
+    "config": {
+        "bin-dir": "/usr/local/bin/"
     },
     "autoload": {
         "psr-0": {
