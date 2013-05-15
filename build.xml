@@ -30,6 +30,7 @@ phpcs - Detects standard violations on the code.
   <target name="phpcs">
     <exec executable="phpcs" failonerror="true">
       <arg value="--standard=PSR2" />
+      <arg value="--ignore=**/tests/*" />
       <arg path="src" />
       <arg path="app" />
     </exec>

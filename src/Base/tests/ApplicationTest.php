@@ -1,5 +1,6 @@
 <?php
 namespace Base;
+
 use Base\Router\RouterInterface;
 
 class ApplicationTest extends \PHPUnit_Framework_TestCase

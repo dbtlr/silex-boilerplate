@@ -8,4 +8,3 @@ $app->start(__DIR__ . '/views');
 $app->addRouter(new App\Router\RootRouter());
 
 return $app;
-

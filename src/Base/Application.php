@@ -16,9 +16,11 @@ class Application extends SilexApplication
     public function start($viewPath)
     {
         $app = $this;
-        $this['resolver'] = $this->share(function () use ($app) {
-            return new ControllerResolver($app, $app['logger']);
-        });
+        $this['resolver'] = $this->share(
+            function () use ($app) {
+                return new ControllerResolver($app, $app['logger']);
+            }
+        );
 
         $this->register(new TwigServiceProvider(), array( 'twig.path' => $viewPath ));
         $this->createErrorHandler();
@@ -32,23 +34,25 @@ class Application extends SilexApplication
     protected function createErrorHandler()
     {
         $app = $this;
-        $this->error(function (\Exception $e, $code) use ($app) {
-            if ($app['debug']) {
-                return;
-            }
+        $this->error(
+            function (\Exception $e, $code) use ($app) {
+                if ($app['debug']) {
+                    return;
+                }
 
-            switch ($code) {
-                case 404:
-                    $message = 'The requested page could not be found.';
-                    break;
-                default:
-                    $message = 'We are sorry, but something went terribly wrong.';
-                    $message .= '<p>' . $e->getMessage() . '</p>';
-                    $message .= '<pre>' . $app->backtrace($e->getTrace()) . '</pre>';
-            }
+                switch ($code) {
+                    case 404:
+                        $message = 'The requested page could not be found.';
+                        break;
+                    default:
+                        $message = 'We are sorry, but something went terribly wrong.';
+                        $message .= '<p>' . $e->getMessage() . '</p>';
+                        $message .= '<pre>' . $app->backtrace($e->getTrace()) . '</pre>';
+                }
 
-            return new Response($message);
-        });
+                return new Response($message);
+            }
+        );
     }
 
     /**
@@ -58,7 +62,7 @@ class Application extends SilexApplication
      * @param array|null $backtrace
      * @return string
      */
-    public function backtrace($backtrace=null)
+    public function backtrace($backtrace = null)
     {
         if (!isset($backtrace)) {
             $backtrace = debug_backtrace();
@@ -72,8 +76,8 @@ class Application extends SilexApplication
             $arguments = '';
 
             // disable argument output for all but the listed functions.
-            if ( in_array( $event['function'], $enableFor ) && isset ( $event['args'] ) ) {
-                $arguments = ArrayUtils::toArgString( $event['args'], true );
+            if (in_array($event['function'], $enableFor) && isset ($event['args'])) {
+                $arguments = ArrayUtils::toArgString($event['args'], true);
             }
 
             if (isset($event['file']) && isset($event['line'])) {
