@@ -28,7 +28,7 @@ phpcs - Detects standard violations on the code.
   </target>
 
   <target name="phpcs">
-    <exec executable="phpcs" failonerror="true">
+    <exec executable="./vendor/bin/phpcs" failonerror="true">
       <arg value="--standard=PSR2" />
       <arg value="--ignore=**/tests/*" />
       <arg path="src" />
