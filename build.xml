@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="silex-bootstrap" basedir="." default="info">
+  <target name="info">
+    <echo>
+info - Shows this help
+test - Tests if the code syntax is correct and executes phpunit tests
+phpcs - Detects standard violations on the code.
+    </echo>
+  </target>
+  
+  <target name="verify" depends="lint,test,phpcs" />
+
+  <target name="lint">
+    <apply executable="php" failonerror="true">
+      <arg value="-l" />
+      <fileset dir="src">
+        <include name="**/*.php" />
+      </fileset>
+      <fileset dir="app">
+        <include name="**/*.php" />
+      </fileset>
+    </apply>
+  </target>
+
+  <target name="test">
+    <exec executable="phpunit" failonerror="true">
+    </exec>
+  </target>
+
+  <target name="phpcs">
+    <exec executable="phpcs" failonerror="true">
+      <arg value="--standard=PSR2" />
+      <arg path="src" />
+      <arg path="app" />
+    </exec>
+  </target>
+</project>

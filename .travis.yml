@@ -5,6 +5,7 @@ php:
 before_script:
   composer install
 
+script: ant verify
 
 notifications:
   email:
