@@ -1,7 +1,8 @@
 <?php
-namespace Base\Controller;
+namespace App\Controller;
 
 use Base\Application;
+use Base\Controller\Controller;
 
 class RootController extends Controller
 {

@@ -1,7 +1,8 @@
 <?php
-namespace Base\Router;
+namespace App\Router;
 
 use Base\Application;
+use Base\Router\RouterInterface;
 
 class RootRouter implements RouterInterface
 {
@@ -9,6 +10,6 @@ class RootRouter implements RouterInterface
     {
         $app->get('/', function () use ($app) { return $app->redirect('/hello/visitor'); });
 
-        $app->get('/hello/{name}', 'Base\Controller\RootController::helloAction'); 
+        $app->get('/hello/{name}', 'App\Controller\RootController::helloAction'); 
     }
 }
