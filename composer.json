@@ -3,10 +3,8 @@
     "require": {
         "silex/silex": "1.0.*@dev",
         "twig/twig": ">=1.8,<2.0-dev",
-        "phpunit/phpunit": "3.7.*"
-    },
-    "config": {
-        "bin-dir": "/usr/local/bin/"
+        "phpunit/phpunit": "3.7.*",
+        "squizlabs/php_codesniffer": "1.*"
     },
     "autoload": {
         "psr-0": {
